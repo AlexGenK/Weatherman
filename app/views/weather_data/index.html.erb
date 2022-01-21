@@ -12,28 +12,55 @@
                         <div class="rounded overflow-hidden shadow-lg">
                         <div class="px-6 py-4">
                             <div class="text-lg mb-2">Метеоданные</div>
-                            <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
+                                <p class="text-gray-700 text-base">
+                                    Температура (t) - <%= @data[:t] %> C
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Относительная влажность (RH) - <%= @data[:rh] %> %
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Давление (p) - <%= @data[:p] %> мм. рт. ст.
+                                </p>
+                            </div>
                         </div>
                         <!--Card 2-->
                         <div class="rounded overflow-hidden shadow-lg row-span-2">
                         <div class="px-6 py-4">
                             <div class="text-lg mb-2">Химические вещества</div>
-                            <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
+                                <p class="text-gray-700 text-base">
+                                    Диоксид азота (NO2) - <%= @data[:no2] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Угарный газ (CO) - <%= @data[:co] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Диоксид серы (SO2) - <%= @data[:so2] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Озон (O3) - <%= @data[:o3] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Углекислый газ (CO2) - <%= @data[:co2] %> ppm
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Формальдегид (CH2O) - <%= @data[:ch2o] %> мкг/м3
+                                </p>
+                            </div>
                         </div>
                         <!--Card 3-->
                         <div class="rounded overflow-hidden shadow-lg">
                         <div class="px-6 py-4">
                             <div class="text-lg mb-2">Пыль</div>
-                            <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                            </p>
-                        </div>
+                                <p class="text-gray-700 text-base">
+                                    Фракция PM1 - <%= @data[:pm1] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Фракция PM2.5 - <%= @data[:pm25] %> мкг/м3
+                                </p>
+                                <p class="text-gray-700 text-base">
+                                    Фракция PM10 - <%= @data[:pm10] %> мкг/м3
+                                </p>                                                        
+                            </div>
                         </div>
 
                     </div>

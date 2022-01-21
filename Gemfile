@@ -30,6 +30,9 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Connect to InfluxDB database [https://github.com/influxdata/influxdb-client-ruby]
+gem "influxdb-client"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

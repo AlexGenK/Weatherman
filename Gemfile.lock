@@ -96,6 +96,7 @@ GEM
     importmap-rails (1.0.2)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    influxdb-client (2.1.0)
     io-console (0.5.11)
     io-wait (0.2.1)
     irb (1.4.1)
@@ -221,6 +222,7 @@ DEPENDENCIES
   capybara
   debug
   importmap-rails
+  influxdb-client
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)

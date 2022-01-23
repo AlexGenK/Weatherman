@@ -5,7 +5,7 @@
           
                 <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                     <h3 class="px-3 text-lg leading-6 font-bold text-gray-900">
-                    Показания на текущий момент (<%= Time.now.strftime("%d/%m/%Y %H:%M") %>)
+                    Показатели загрязнения воздуха в Шевченковском р-не г. Харьков на текущий момент (<%= Time.now.strftime("%d/%m/%Y %H:%M") %>)
                     </h3>
                     <div class="p-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
                         <!--Card 1-->
@@ -19,7 +19,7 @@
                                     Относительная влажность (RH) - <%= @data[:rh] %> %
                                 </p>
                                 <p class="text-gray-700 text-base">
-                                    Давление (p) - <%= @data[:p] %> мм. рт. ст.
+                                    Давление (p) - <%= @data[:p] %> Па.
                                 </p>
                             </div>
                         </div>
@@ -27,23 +27,23 @@
                         <div class="rounded overflow-hidden shadow-lg row-span-2">
                         <div class="px-6 py-4">
                             <div class="text-lg mb-2">Химические вещества</div>
-                                <p class="text-gray-700 text-base">
-                                    Диоксид азота (NO2) - <%= @data[:no2] %> мкг/м3
+                                <p class="<%= @data[:no2]>WEATHER_PARAMS[:no2][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
+                                    Диоксид азота (NO2) - <%= @data[:no2] %> ppm
                                 </p>
-                                <p class="text-gray-700 text-base">
-                                    Угарный газ (CO) - <%= @data[:co] %> мкг/м3
+                                <p class="<%= @data[:co]>WEATHER_PARAMS[:co][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
+                                    Угарный газ (CO) - <%= @data[:co] %> ppm
                                 </p>
-                                <p class="text-gray-700 text-base">
-                                    Диоксид серы (SO2) - <%= @data[:so2] %> мкг/м3
+                                <p class="<%= @data[:so2]>WEATHER_PARAMS[:so2][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
+                                    Диоксид серы (SO2) - <%= @data[:so2] %> ppm
                                 </p>
-                                <p class="text-gray-700 text-base">
-                                    Озон (O3) - <%= @data[:o3] %> мкг/м3
+                                <p class="<%= @data[:o3]>WEATHER_PARAMS[:o3][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
+                                    Озон (O3) - <%= @data[:o3] %> ppm
+                                </p>
+                                <p class="<%= @data[:ch2o]>WEATHER_PARAMS[:ch2o][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
+                                    Формальдегид (CH2O) - <%= @data[:ch2o] %> мг/м3
                                 </p>
                                 <p class="text-gray-700 text-base">
                                     Углекислый газ (CO2) - <%= @data[:co2] %> ppm
-                                </p>
-                                <p class="text-gray-700 text-base">
-                                    Формальдегид (CH2O) - <%= @data[:ch2o] %> мкг/м3
                                 </p>
                             </div>
                         </div>
@@ -54,10 +54,10 @@
                                 <p class="text-gray-700 text-base">
                                     Фракция PM1 - <%= @data[:pm1] %> мкг/м3
                                 </p>
-                                <p class="text-gray-700 text-base">
+                                <p class="<%= @data[:pm25]>WEATHER_PARAMS[:pm25][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
                                     Фракция PM2.5 - <%= @data[:pm25] %> мкг/м3
                                 </p>
-                                <p class="text-gray-700 text-base">
+                                <p class="<%= @data[:pm10]>WEATHER_PARAMS[:pm10][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
                                     Фракция PM10 - <%= @data[:pm10] %> мкг/м3
                                 </p>                                                        
                             </div>

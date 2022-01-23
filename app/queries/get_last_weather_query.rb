@@ -9,7 +9,7 @@ class GetLastWeatherQuery
                                                     |> last() 
                                                     |> filter(fn: (r) => 
                                                     r._measurement == "' + measurement + '" and 
-                                                    r._field == "' + value + '")')
+                                                    r._field == "' + value[:field] + '")')
             records.each do |record|
                 meteo[key] = record.values["_value"]
             end

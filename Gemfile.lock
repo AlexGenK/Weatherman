@@ -115,6 +115,9 @@ GEM
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.2)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -198,6 +201,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.5)
       tzinfo (>= 1.0.0)
+    uri (0.11.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -224,6 +228,7 @@ DEPENDENCIES
   importmap-rails
   influxdb-client
   jbuilder
+  net-http
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.1)

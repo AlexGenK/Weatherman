@@ -32,6 +32,7 @@ gem "jbuilder"
 
 # Connect to InfluxDB database [https://github.com/influxdata/influxdb-client-ruby]
 gem "influxdb-client"
+gem "net-http"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

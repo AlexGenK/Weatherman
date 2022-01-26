@@ -29,6 +29,11 @@ class StationsController < ApplicationController
         end
     end
 
+    def destroy
+        @station.destroy
+        redirect_to stations_path
+    end
+
     private
 
     def station_params

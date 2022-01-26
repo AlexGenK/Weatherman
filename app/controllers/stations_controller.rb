@@ -18,6 +18,17 @@ class StationsController < ApplicationController
         end
     end
 
+    def edit
+    end
+
+    def update
+        if @station.update(station_params)
+            redirect_to stations_path
+        else
+            render :edit
+        end
+    end
+
     private
 
     def station_params

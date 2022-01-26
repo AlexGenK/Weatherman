@@ -1,0 +1,14 @@
+<%= form_for station do |f| %>
+    <%= f.label :name, "Наименование" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :address, "Адрес" %>
+    <%= f.text_field :address %>
+    <br>
+    <%= f.label :influx_id, "Идентификатор" %>
+    <%= f.text_field :influx_id %>
+    <br>
+    <%= f.button type: 'submit' do %>
+		<i class="fas fa-save"></i> Сохранить
+	<% end %>
+<% end %>

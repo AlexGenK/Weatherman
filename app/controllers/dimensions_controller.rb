@@ -1,5 +1,5 @@
 class DimensionsController < ApplicationController
-    before_action :set_station, only: [:edit, :update, :destroy]
+    before_action :set_dimension, only: [:edit, :update, :destroy]
 
     def index
         @dimensions = Dimension.order(:name)
@@ -15,6 +15,17 @@ class DimensionsController < ApplicationController
             redirect_to dimensions_path
         else
             render :new
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        if @dimension.update(dimension_params)
+            redirect_to dimensions_path
+        else
+            render :edit
         end
     end
     

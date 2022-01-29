@@ -28,6 +28,11 @@ class DimensionsController < ApplicationController
             render :edit
         end
     end
+
+    def destroy
+        @dimension.destroy
+        redirect_to dimensions_path
+    end
     
     private
 

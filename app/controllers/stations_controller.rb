@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-    before_action :set_station, only: [:edit, :update, :destroy, :show]
+    before_action :set_station, only: [:edit, :update, :destroy]
 
     def index
         @stations = Station.order(:name)

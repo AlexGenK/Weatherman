@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_200129) do
+ActiveRecord::Schema.define(version: 2022_01_29_093734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 2022_01_27_200129) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "measurements", force: :cascade do |t|
+    t.string "influx_id"
+    t.float "calibration"
+    t.float "coefficient"
+    t.integer "rank"
+    t.bigint "station_id", null: false
+    t.bigint "dimension_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dimension_id"], name: "index_measurements_on_dimension_id"
+    t.index ["station_id"], name: "index_measurements_on_station_id"
+  end
+
   create_table "stations", force: :cascade do |t|
     t.string "name"
     t.text "address"
@@ -32,4 +45,6 @@ ActiveRecord::Schema.define(version: 2022_01_27_200129) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "measurements", "dimensions"
+  add_foreign_key "measurements", "stations"
 end

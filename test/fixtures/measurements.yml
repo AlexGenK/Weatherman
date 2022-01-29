@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  influx_id: MyString
+  calibration: 1.5
+  coefficient: 1.5
+  rank: 1
+  station: one
+  dimension: one
+
+two:
+  influx_id: MyString
+  calibration: 1.5
+  coefficient: 1.5
+  rank: 1
+  station: two
+  dimension: two

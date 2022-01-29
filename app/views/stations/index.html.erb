@@ -27,7 +27,7 @@
               <% @stations.each do |station| %>
                   <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      <%= station.name %>
+                      <%= link_to station.name, station_measurements_path(station), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <%= station.address %>

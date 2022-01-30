@@ -1,12 +1,13 @@
 class MeasurementsController < ApplicationController
     before_action :set_station
+    before_action :set_measurement, only: [:edit, :update]
 
     def index
         @measurements = @station.measurements.order(:rank)
     end
 
     def new
-        @dimensions_list = Dimension.order(:name).collect {|p| [p.name, p.id]} 
+        @dimensions_list = Dimension.list
         @dimension=Dimension.find(@dimensions_list[0][1])
         @measurement = @station.measurements.new(dimension_id: @dimension.id)
     end
@@ -20,11 +21,27 @@ class MeasurementsController < ApplicationController
         end
     end
 
+    def edit
+        @dimensions_list = Dimension.list
+    end
+
+    def update
+        if @measurement.update(measurement_params)
+            redirect_to station_measurements_path(@station)
+        else
+            render :edit
+        end
+    end
+
     private
 
     def set_station
         @station = Station.find(params[:station_id])
     end
+
+    def set_measurement
+        @measurement = Measurement.find(params[:id])
+    end    
 
     def measurement_params
         params.require(:measurement).permit(:dimension_id, :influx_id, :calibration, :coefficient, :rank)

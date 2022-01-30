@@ -23,7 +23,7 @@
         </div>
     </form>
     <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow">
-        <% unless @data.empty? %>
+        <% unless @last_weather.empty? %>
             <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="px-3 text-lg leading-6 font-bold text-gray-900">
                 Показатели загрязнения воздуха метеостанции <%= @station.name %> на текущий момент (<%= Time.now.strftime("%d/%m/%Y %H:%M") %>)
@@ -33,54 +33,33 @@
                     <div class="rounded overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Метеоданные</div>
-                            <p class="text-gray-700 text-base">
-                                Температура (t) - <%= @data[:t] %> C
-                            </p>
-                            <p class="text-gray-700 text-base">
-                                Относительная влажность (RH) - <%= @data[:rh] %> %
-                            </p>
-                            <p class="text-gray-700 text-base">
-                                Давление (p) - <%= @data[:p] %> Па.
-                            </p>
+                            <% @last_weather["Метеоданные"]&.each do |item| %>
+                                <p class="text-gray-700 text-base">
+                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                </p>
+                            <% end %>
                         </div>
                     </div>
                     <!--Card 2-->
                     <div class="rounded overflow-hidden shadow-lg row-span-2">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Химические вещества</div>
-                            <p class="<%= @data[:no2]>WEATHER_PARAMS[:no2][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Диоксид азота (NO2) - <%= @data[:no2] %> ppm
-                            </p>
-                            <p class="<%= @data[:co]>WEATHER_PARAMS[:co][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Угарный газ (CO) - <%= @data[:co] %> ppm
-                            </p>
-                            <p class="<%= @data[:so2]>WEATHER_PARAMS[:so2][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Диоксид серы (SO2) - <%= @data[:so2] %> ppm
-                            </p>
-                            <p class="<%= @data[:o3]>WEATHER_PARAMS[:o3][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Озон (O3) - <%= @data[:o3] %> ppm
-                            </p>
-                            <p class="<%= @data[:ch2o]>WEATHER_PARAMS[:ch2o][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Формальдегид (CH2O) - <%= @data[:ch2o] %> мг/м3
-                            </p>
-                            <p class="text-gray-700 text-base">
-                                Углекислый газ (CO2) - <%= @data[:co2] %> ppm
-                            </p>
+                            <% @last_weather["Химические вещества"]&.each do |item| %>
+                                <p class="text-gray-700 text-base">
+                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                </p>
+                            <% end %>
                         </div>
                     </div>
                     <!--Card 3-->
                     <div class="rounded overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Пыль</div>
-                            <p class="text-gray-700 text-base">
-                                Фракция PM1 - <%= @data[:pm1] %> мкг/м3
-                            </p>
-                            <p class="<%= @data[:pm25]>WEATHER_PARAMS[:pm25][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Фракция PM2.5 - <%= @data[:pm25] %> мкг/м3
-                            </p>
-                            <p class="<%= @data[:pm10]>WEATHER_PARAMS[:pm10][:margin] ? 'text-red-500' : 'text-green-600' %> text-base">
-                                Фракция PM10 - <%= @data[:pm10] %> мкг/м3
-                            </p>                                                        
+                            <% @last_weather["Пыль"]&.each do |item| %>
+                                <p class="text-gray-700 text-base">
+                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                </p>
+                            <% end %>
                         </div>
                     </div>
                 </div>

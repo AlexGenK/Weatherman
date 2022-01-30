@@ -6,6 +6,7 @@ class WeatherDataController < ApplicationController
         else
             @station = Station.find_by(influx_id: @stations_list[0][1])
         end
-        @data = GetLastWeatherQuery.call(@station.influx_id, WEATHER_PARAMS)
+        @measurements_list = GetMeasurementsListQuery.call(@station)
+        @last_weather = GetLastWeatherQuery.call(@station, @measurements_list)
     end
 end

@@ -1,6 +1,6 @@
 class MeasurementsController < ApplicationController
     before_action :set_station
-    before_action :set_measurement, only: [:edit, :update]
+    before_action :set_measurement, only: [:edit, :update, :destroy]
 
     def index
         @measurements = @station.measurements.order(:rank)
@@ -31,6 +31,11 @@ class MeasurementsController < ApplicationController
         else
             render :edit
         end
+    end
+
+    def destroy
+        @measurement.destroy
+        redirect_to station_measurements_path(@station)
     end
 
     private

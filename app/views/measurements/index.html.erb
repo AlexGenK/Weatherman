@@ -1,1 +1,59 @@
 <h1 class="px-3 text-lg leading-6 font-bold text-gray-900">Измерения, производимые станцией <%= @station.name %> </h1>
+<%= link_to new_station_measurement_path(@station), class: "px-3 inline-flex items-center h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" do %>
+    <i class="fas fa-plus pr-3"></i> Добавить измерение
+<% end %>
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 px-2">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Ранг
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Идентификатор
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Калибровка
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Коэффициент пересчета
+              </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200" x-max="1">
+              <% @measurements.each do |measurement| %>
+                  <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <%= measurement.rank %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <%= measurement.influx_id %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <%= measurement.calibration %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <%= measurement.coefficient %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <%= link_to edit_station_measurement_path(@station, measurement), class: "text-indigo-600 hover:text-indigo-900" do %>
+                          <i class="far fa-edit"></i>
+                      <% end %>| 
+                      <%= link_to measurement, data: { "turbo-method": :delete, "turbo-confirm": "Вы уверены?" }, class: "text-red-600 hover:text-red-900" do %>
+                          <i class="far fa-trash-alt"></i>
+                      <% end %>
+                  </td>
+                  </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

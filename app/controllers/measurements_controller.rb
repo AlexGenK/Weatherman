@@ -2,6 +2,7 @@ class MeasurementsController < ApplicationController
     before_action :set_station
 
     def index
+        @measurements = @station.measurements.order(:rank)
     end
 
     private

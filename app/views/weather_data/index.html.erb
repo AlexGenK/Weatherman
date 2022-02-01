@@ -35,7 +35,7 @@
                         <div class="text-lg mb-2">Метеоданные</div>
                             <% @last_weather["Метеоданные"]&.each do |item| %>
                                 <p class="text-gray-700 text-base">
-                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                    <%= "#{item[:name]} - #{item[:value]} #{item[:unit]}" %>
                                 </p>
                             <% end %>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="text-lg mb-2">Химические вещества</div>
                             <% @last_weather["Химические вещества"]&.each do |item| %>
                                 <p class="text-gray-700 text-base">
-                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                    <%= "#{item[:name]} - #{item[:value]} #{item[:unit]}" %>
                                 </p>
                             <% end %>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="text-lg mb-2">Пыль</div>
                             <% @last_weather["Пыль"]&.each do |item| %>
                                 <p class="text-gray-700 text-base">
-                                    <%= "#{item[:name]} - #{item[:value]}" %>
+                                    <%= "#{item[:name]} - #{item[:value]} #{item[:unit]}" %>
                                 </p>
                             <% end %>
                         </div>

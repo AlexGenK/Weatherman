@@ -15,6 +15,7 @@ class GetLastWeatherQuery
                 next if records.first == nil
                 measur={}
                 measur[:name] = item.dimension.name
+                measur[:unit] = item.dimension.unit
                 measur[:value] = records.first.values["_value"]
                 @category << measur
             end

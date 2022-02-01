@@ -16,7 +16,7 @@ class GetLastWeatherQuery
                 measur={}
                 measur[:name] = item.dimension.name
                 measur[:unit] = item.dimension.unit
-                measur[:value] = records.first.values["_value"]
+                measur[:value] = item.corrected(records.first.values["_value"])
                 @category << measur
             end
             @meteo[key] = @category

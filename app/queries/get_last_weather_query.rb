@@ -14,9 +14,11 @@ class GetLastWeatherQuery
                                                         r._field == "' + item.influx_id + '")')
                 next if records.first == nil
                 measur={}
+                corr = item.corrected(records.first.values["_value"])
                 measur[:name] = item.dimension.name
                 measur[:unit] = item.dimension.unit
-                measur[:value] = item.corrected(records.first.values["_value"])
+                measur[:color] = item.get_color(corr)
+                measur[:value] = corr
                 @category << measur
             end
             @meteo[key] = @category

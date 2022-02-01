@@ -34,7 +34,7 @@
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Метеоданные</div>
                             <% @last_weather["Метеоданные"]&.each do |item| %>
-                                <p class="text-gray-700 text-base">
+                                <p class="<%= item[:color] %> text-base">
                                     <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
                                 </p>
                             <% end %>
@@ -45,7 +45,7 @@
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Химические вещества</div>
                             <% @last_weather["Химические вещества"]&.each do |item| %>
-                                <p class="text-gray-700 text-base">
+                                <p class="<%= item[:color] %> text-base">
                                     <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
                                 </p>
                             <% end %>
@@ -56,20 +56,20 @@
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Пыль</div>
                             <% @last_weather["Пыль"]&.each do |item| %>
-                                <p class="text-gray-700 text-base">
+                                <p class="<%= item[:color] %> text-base">
                                     <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
                                 </p>
                             <% end %>
                         </div>
                     </div>
                 </div>
-                <p class="px-3 text-lg leading-6 text-green-600">
+                <p class="px-3 text-lg leading-6 <%= COLORS[:safe] %>">
                     <i class="fas fa-circle"></i> - нормальное значение
                 </p>
-                <p class="px-3 text-lg leading-6 text-red-500">
+                <p class="px-3 text-lg leading-6 <%= COLORS[:danger] %>">
                     <i class="fas fa-circle"></i> - превышение нормы
                 </p>
-                <p class="px-3 text-lg leading-6">
+                <p class="px-3 text-lg leading-6" <%= COLORS[:neutral] %>>
                     <i class="fas fa-circle"></i> - показатель не нормируется
                 </p>
             </div>

@@ -14,7 +14,7 @@ class Measurement < ApplicationRecord
   end
 
   def set_now_val
-    records = READ_WEATHER_API.query_stream(query: 'from(bucket:"' + bucket + '") 
+    records = READ_WEATHER_API.query_stream(query: 'from(bucket:"' + BUCKET + '") 
                                                     |> range(start: 1970-01-01T00:00:00.000000001Z) 
                                                     |> last() 
                                                     |> filter(fn: (r) => 

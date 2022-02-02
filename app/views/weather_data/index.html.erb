@@ -23,7 +23,7 @@
         </div>
     </form>
     <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow">
-        <% unless @last_weather.empty? %>
+        <% unless @measurements_list.empty? %>
             <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="px-3 text-lg leading-6 font-bold text-gray-900">
                 Показатели загрязнения воздуха метеостанции <%= @station.name %> на текущий момент (<%= Time.now.strftime("%d/%m/%Y %H:%M") %>)
@@ -33,10 +33,12 @@
                     <div class="rounded overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Метеоданные</div>
-                            <% @last_weather["Метеоданные"]&.each do |item| %>
-                                <p class="<%= item[:color] %> text-base">
-                                    <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
-                                </p>
+                            <% @measurements_list["Метеоданные"]&.each do |item| %>
+                                <% unless item.now_val == nil %>
+                                    <p class="<%= item.color %> text-base">
+                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                    </p>
+                                <% end %>
                             <% end %>
                         </div>
                     </div>
@@ -44,10 +46,12 @@
                     <div class="rounded overflow-hidden shadow-lg row-span-2">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Химические вещества</div>
-                            <% @last_weather["Химические вещества"]&.each do |item| %>
-                                <p class="<%= item[:color] %> text-base">
-                                    <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
-                                </p>
+                            <% @measurements_list["Химические вещества"]&.each do |item| %>
+                                <% unless item.now_val == nil %>
+                                    <p class="<%= item.color %> text-base">
+                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                    </p>
+                                <% end %>
                             <% end %>
                         </div>
                     </div>
@@ -55,10 +59,12 @@
                     <div class="rounded overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
                         <div class="text-lg mb-2">Пыль</div>
-                            <% @last_weather["Пыль"]&.each do |item| %>
-                                <p class="<%= item[:color] %> text-base">
-                                    <%= "#{item[:name]} - #{item[:value].round(2)} #{item[:unit]}" %>
-                                </p>
+                            <% @measurements_list["Пыль"]&.each do |item| %>
+                                <% unless item.now_val == nil %>
+                                    <p class="<%= item.color %> text-base">
+                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                    </p>
+                                <% end %>
                             <% end %>
                         </div>
                     </div>

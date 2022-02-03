@@ -25,7 +25,7 @@ class Measurement < ApplicationRecord
                                                     |> filter(fn: (r) => 
                                                       r._measurement == "' + self.station.influx_id + '" and 
                                                       r._field == "' + self.influx_id + '")
-                                                    |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)')
+                                                    |> aggregateWindow(every: 30m, fn: mean, createEmpty: false)')
 
     self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value'])]}
   end

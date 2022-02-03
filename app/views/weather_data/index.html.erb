@@ -91,6 +91,10 @@
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
             <% @measurements_list&.each do |key, item| %>
                 <p><%= key %></p>
+                <% item.each do |mes| %>
+                    <p><%= mes.dimension.name %></p>
+                    <p><%= line_chart mes.range_val %></p>
+                <% end %>
             <% end %>
         </div>
     </div>

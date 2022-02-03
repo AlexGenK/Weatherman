@@ -3,15 +3,7 @@ class Measurement < ApplicationRecord
   belongs_to :dimension
 
   attr_accessor :now_val
-
-  def corrected_now_val
-    if now_val == nil
-      return nil
-    else
-      self.coefficient||=1
-      return (self.now_val+self.calibration)*self.coefficient
-    end
-  end
+  attr_accessor :range_val
 
   def set_now_val
     records = READ_WEATHER_API.query_stream(query: 'from(bucket:"' + BUCKET + '") 
@@ -23,17 +15,39 @@ class Measurement < ApplicationRecord
     if records.first == nil
       self.now_val = nil
     else
-      self.now_val = records.first.values["_value"]
+      self.now_val = corrected(records.first.values["_value"])
     end
+  end
+
+  def set_range_val
+    records = READ_WEATHER_API.query_stream(query: 'from(bucket:"' + BUCKET + '") 
+                                                    |> range(start: -24h) 
+                                                    |> filter(fn: (r) => 
+                                                      r._measurement == "' + self.station.influx_id + '" and 
+                                                      r._field == "' + self.influx_id + '")
+                                                    |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)')
+
+    self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value'])]}
   end
 
   def color
     if (self.dimension.guideline==nil)||(self.dimension.guideline==0)
       return COLORS[:neutral]
-    elsif self.corrected_now_val <= self.dimension.guideline
+    elsif self.now_val <= self.dimension.guideline
       return COLORS[:safe]
     else
       return COLORS[:danger]
     end
+  end
+
+  private 
+
+  def corrected(mes)
+    if mes == nil
+      return nil
+    else
+      self.coefficient||=1
+      return (mes+self.calibration)*self.coefficient
+    end 
   end
 end

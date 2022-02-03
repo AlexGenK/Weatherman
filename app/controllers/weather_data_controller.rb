@@ -8,5 +8,6 @@ class WeatherDataController < ApplicationController
         end
         @measurements_list = GetMeasurementsListQuery.call(@station)
         GetLastWeatherQuery.call(@measurements_list)
+        GetDailyWeatherQuery.call(@measurements_list)
     end
 end

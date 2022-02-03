@@ -22,7 +22,7 @@
           </div>
         </div>
     </form>
-    <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow">
+    <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow mb-8">
         <% unless @measurements_list.empty? %>
             <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                 <h3 class="px-3 text-lg leading-6 font-bold text-gray-900">
@@ -36,7 +36,7 @@
                             <% @measurements_list["Метеоданные"]&.each do |item| %>
                                 <% unless item.now_val == nil %>
                                     <p class="<%= item.color %> text-base">
-                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                        <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     </p>
                                 <% end %>
                             <% end %>
@@ -49,7 +49,7 @@
                             <% @measurements_list["Химические вещества"]&.each do |item| %>
                                 <% unless item.now_val == nil %>
                                     <p class="<%= item.color %> text-base">
-                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                        <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     </p>
                                 <% end %>
                             <% end %>
@@ -62,7 +62,7 @@
                             <% @measurements_list["Пыль"]&.each do |item| %>
                                 <% unless item.now_val == nil %>
                                     <p class="<%= item.color %> text-base">
-                                        <%= "#{item.dimension.name} - #{item.corrected_now_val.round(2)} #{item.dimension.unit}" %>
+                                        <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     </p>
                                 <% end %>
                             <% end %>
@@ -86,5 +86,12 @@
                 </h3>
             </div>
         <% end %>
+    </div>
+    <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow">
+        <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+            <% @measurements_list&.each do |key, item| %>
+                <p><%= key %></p>
+            <% end %>
+        </div>
     </div>
 </div>

@@ -34,6 +34,9 @@ gem "jbuilder"
 gem "influxdb-client"
 gem "net-http"
 
+# Create JavaScript charts [https://github.com/ankane/chartkick]
+gem "chartkick"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

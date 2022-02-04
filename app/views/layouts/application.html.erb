@@ -15,7 +15,9 @@
   </head>
 
   <body>
-    <% unless current_page?(controller: 'weather_data') %>
+    <% unless current_page?(action: 'daily') ||
+              current_page?('/daily')
+    %>
       <div class="bg-gray-100">    
         <nav x-data="{ open: false }" class="bg-white shadow" > 
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

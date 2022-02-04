@@ -1,5 +1,5 @@
 class WeatherDataController < ApplicationController
-    def index
+    def daily
         @stations_list = Station.list
         if params[:station_id]
             @station = Station.find_by(influx_id: params[:station_id])

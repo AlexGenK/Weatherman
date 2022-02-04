@@ -1,0 +1,23 @@
+<form class="space-y-8 divide-y divide-gray-200 mb-3">
+    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+        <label for="station_id" class="block text-sm font-medium text-gray-700">
+            Метеостанция
+        </label>
+        <div class="mt-1">
+            <%= select_tag :station_id, options_for_select(@stations_list, selected: @station.influx_id), class: "h-10 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+        </div>
+
+        <div class="">
+        <label for="last_name" class="block text-sm font-medium text-gray-700">
+            &nbsp; 
+        </label>
+        <div class="mt-1">
+            <button type="submit" class="px-3 inline-flex items-center h-10 px-5 text-white border border-transparent shadow-sm text-sm font-medium transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+                <i class="far fa-eye pr-3"></i> Показать
+            </button>
+        </div>
+        </div>
+    </div>
+</form>

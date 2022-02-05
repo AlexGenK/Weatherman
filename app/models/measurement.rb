@@ -19,13 +19,13 @@ class Measurement < ApplicationRecord
     end
   end
 
-  def set_range_val
+  def set_range_val(start: '-24h', every: '30m')
     records = READ_WEATHER_API.query_stream(query: 'from(bucket:"' + BUCKET + '") 
-                                                    |> range(start: -24h) 
+                                                    |> range(start: ' + start + ') 
                                                     |> filter(fn: (r) => 
                                                       r._measurement == "' + self.station.influx_id + '" and 
                                                       r._field == "' + self.influx_id + '")
-                                                    |> aggregateWindow(every: 30m, fn: mean, createEmpty: false)')
+                                                    |> aggregateWindow(every:' + every + ', fn: mean, createEmpty: false)')
 
     self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value'])]}
   end

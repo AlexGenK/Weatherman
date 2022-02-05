@@ -27,7 +27,7 @@ class Measurement < ApplicationRecord
                                                       r._field == "' + self.influx_id + '")
                                                     |> aggregateWindow(every:' + every + ', fn: mean, createEmpty: false)')
 
-    self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value'])]}
+    self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value']).round(3)]}
   end
 
   def color

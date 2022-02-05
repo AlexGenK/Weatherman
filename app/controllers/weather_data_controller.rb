@@ -13,6 +13,12 @@ class WeatherDataController < ApplicationController
         GetWeeklyWeatherQuery.call(@measurements_list)
     end
 
+    def monthly
+        @measurements_list = GetMeasurementsListQuery.call(@station)
+        GetLastWeatherQuery.call(@measurements_list)
+        GetMonthlyWeatherQuery.call(@measurements_list)
+    end
+
     private
 
     def set_station

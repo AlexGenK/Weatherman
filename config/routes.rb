@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'daily', to: 'weather_data#daily'
   get 'weekly', to: 'weather_data#weekly'
+  get 'monthly', to: 'weather_data#monthly'
 
   resources :dimensions
   resources :stations do

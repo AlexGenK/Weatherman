@@ -1,0 +1,19 @@
+<div class="max-w-none mx-auto">
+    <%= render 'select_station' %>
+
+    <%= render 'weather_now' %>
+
+    <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow">
+
+        <%= render 'period_tabs', period: 'yearly' %>
+
+        <% @measurements_list&.each do |key, item| %>
+            <% item.each do |mes| %>
+                <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+                    <p><%= "#{mes.dimension.name} #{mes.dimension.unit}" %></p>
+                    <p><%= line_chart mes.range_val %></p>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

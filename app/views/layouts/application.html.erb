@@ -18,7 +18,8 @@
     <% unless current_page?('/') ||
               current_page?('/daily') ||
               current_page?('/weekly') ||
-              current_page?('/monthly')
+              current_page?('/monthly') ||
+              current_page?('/yearly')
     %>
       <div class="bg-gray-100">    
         <nav x-data="{ open: false }" class="bg-white shadow" > 

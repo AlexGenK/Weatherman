@@ -37,6 +37,9 @@ gem "net-http"
 # Create JavaScript charts [https://github.com/ankane/chartkick]
 gem "chartkick"
 
+# Flexible authentication solution [https://github.com/heartcombo/devise]
+gem "devise"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

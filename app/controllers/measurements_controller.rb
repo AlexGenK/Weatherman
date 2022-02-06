@@ -1,4 +1,5 @@
 class MeasurementsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_station
     before_action :set_measurement, only: [:edit, :update, :destroy]
 

@@ -30,9 +30,7 @@
                   <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
                   <%= link_to 'Станции', stations_path, class: "#{controller_name=='stations' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
                   <%= link_to 'Параметры', dimensions_path, class: "#{controller_name=='dimensions' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
-                  <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                    Пользователи
-                  </a>
+                  <%= link_to 'Пользователи', users_path, class: "#{controller_name=='users' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
                   <%= link_to 'Погода', root_path, class: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" %>
                 </div>
               </div>
@@ -78,7 +76,7 @@
               <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
               <%= link_to 'Станции', stations_path, class: "#{controller_name=='stations' ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium" %>
               <%= link_to 'Параметры', dimensions_path, class: "#{controller_name=='dimensions' ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium" %>
-              <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Пользователи</a>
+              <%= link_to 'Пользователи', users_path, class: "#{controller_name=='users' ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'} block pl-3 pr-4 py-2 border-l-4 text-base font-medium" %>
               <%= link_to 'Погода', root_path, class: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700' block pl-3 pr-4 py-2 border-l-4 text-base font-medium" %>
             </div>
 

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :stations do
     resources :measurements
   end
+
+  resources :users
 end

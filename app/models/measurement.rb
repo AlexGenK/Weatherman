@@ -28,6 +28,10 @@ class Measurement < ApplicationRecord
                                                     |> aggregateWindow(every:' + every + ', fn: mean, createEmpty: false)')
 
     self.range_val = records.map{|i| [i.values['_time'].to_datetime.in_time_zone('Kyiv'), corrected(i.values['_value']).round(3)]}
+
+    if (self.dimension.guideline != 0) && (self.dimension.guideline != nil)
+      self.range_val = [{name: 'Данные', data: self.range_val}, {name: 'Максимально-допустимое значение', data: [[self.range_val.first[0], self.dimension.guideline], [self.range_val.last[0], self.dimension.guideline]], library: {spanGaps: true}}]
+    end
   end
 
   def color

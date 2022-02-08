@@ -38,7 +38,7 @@ class DimensionsController < ApplicationController
     private
 
     def dimension_params
-        params.require(:dimension).permit(:name, :unit, :category, :guideline)
+        params.require(:dimension).permit(:name, :unit, :category, :guideline, :description)
     end
 
     def set_dimension

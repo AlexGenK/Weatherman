@@ -12,7 +12,7 @@
                         <% @measurements_list["Метеоданные"]&.each do |item| %>
                             <% unless item.now_val == nil %>
                                 <p class="<%= item.color %> text-base">
-                                    <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
+                                    <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                 </p>
                             <% end %>
                         <% end %>
@@ -25,7 +25,7 @@
                         <% @measurements_list["Химические вещества"]&.each do |item| %>
                             <% unless item.now_val == nil %>
                                 <p class="<%= item.color %> text-base">
-                                    <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
+                                    <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                 </p>
                             <% end %>
                         <% end %>
@@ -37,8 +37,8 @@
                     <div class="text-lg mb-2">Пыль</div>
                         <% @measurements_list["Пыль"]&.each do |item| %>
                             <% unless item.now_val == nil %>
-                                <p class="<%= item.color %> text-base">
-                                    <%= "#{item.dimension.name} - #{item.now_val.round(2)} #{item.dimension.unit}" %>
+                                <p class="<%= item.color %> text-base relative flex flex-col items-left group">
+                                    <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                 </p>
                             <% end %>
                         <% end %>
@@ -53,7 +53,7 @@
             </p>
             <p class="px-3 text-lg leading-6 text-gray-700">
                 <i class="fas fa-circle"></i> - показатель не нормируется
-            </p>
+            </p>	
         </div>
     <% else %>
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">

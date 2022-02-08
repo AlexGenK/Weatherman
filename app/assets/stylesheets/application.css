@@ -75,3 +75,12 @@ color: #f8fafc; /*.text-grey-lightest*/
 transform: rotateX(180deg);
 background-color: #6574cd; /*.bg-indigo*/
 color: #f8fafc; /*.text-grey-lightest*/
+}
+.rotate-45 {
+    --transform-rotate: 45deg;
+    transform: rotate(45deg);
+}
+
+.group:hover .group-hover\:flex {
+    display: flex;
+}

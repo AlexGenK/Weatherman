@@ -11,9 +11,15 @@
                     <div class="text-lg mb-2">Метеоданные</div>
                         <% @measurements_list["Метеоданные"]&.each do |item| %>
                             <% unless item.now_val == nil %>
-                                <p class="<%= item.color %> text-base">
+                                <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
-                                </p>
+                                    <% if item.dimension.description != nil %>
+                                        <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+		                                </div>
+                                    <% end %>
+                                </div>
                             <% end %>
                         <% end %>
                     </div>
@@ -24,9 +30,15 @@
                     <div class="text-lg mb-2">Химические вещества</div>
                         <% @measurements_list["Химические вещества"]&.each do |item| %>
                             <% unless item.now_val == nil %>
-                                <p class="<%= item.color %> text-base">
+                                <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
-                                </p>
+                                    <% if item.dimension.description != nil %>
+                                        <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+		                                </div>
+                                    <% end %>
+                                </div>
                             <% end %>
                         <% end %>
                     </div>
@@ -37,9 +49,15 @@
                     <div class="text-lg mb-2">Пыль</div>
                         <% @measurements_list["Пыль"]&.each do |item| %>
                             <% unless item.now_val == nil %>
-                                <p class="<%= item.color %> text-base relative flex flex-col items-left group">
+                                <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
-                                </p>
+                                    <% if item.dimension.description != nil %>
+                                        <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+		                                </div>
+                                    <% end %>
+                                </div>
                             <% end %>
                         <% end %>
                     </div>

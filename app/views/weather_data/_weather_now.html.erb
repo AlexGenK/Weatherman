@@ -7,17 +7,17 @@
             <div class="p-3 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
                 <!--Card 1-->
                 <div class="rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-4">
-                    <div class="text-lg mb-2">Метеоданные</div>
+                    <div class="px-6 py-4">
+                        <div class="text-lg mb-2">Метеоданные</div>
                         <% @measurements_list["Метеоданные"]&.each do |item| %>
                             <% unless item.now_val == nil %>
                                 <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     <% if item.dimension.description != nil %>
                                         <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
-			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-		                                </div>
+                                            <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+                                            <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                                        </div>
                                     <% end %>
                                 </div>
                             <% end %>
@@ -26,17 +26,17 @@
                 </div>
                 <!--Card 2-->
                 <div class="rounded overflow-hidden shadow-lg row-span-2">
-                <div class="px-6 py-4">
-                    <div class="text-lg mb-2">Химические вещества</div>
+                    <div class="px-6 py-4">
+                        <div class="text-lg mb-2">Химические вещества</div>
                         <% @measurements_list["Химические вещества"]&.each do |item| %>
                             <% unless item.now_val == nil %>
                                 <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     <% if item.dimension.description != nil %>
                                         <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
-			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-		                                </div>
+                                            <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+                                            <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                                        </div>
                                     <% end %>
                                 </div>
                             <% end %>
@@ -45,33 +45,51 @@
                 </div>
                 <!--Card 3-->
                 <div class="rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-4">
-                    <div class="text-lg mb-2">Пыль</div>
+                    <div class="px-6 py-4">
+                        <div class="text-lg mb-2">Пыль</div>
                         <% @measurements_list["Пыль"]&.each do |item| %>
                             <% unless item.now_val == nil %>
                                 <div class="<%= item.color %> text-base relative flex flex-col items-left group">
                                     <%= "#{item.dimension.name} = #{item.now_val.round(2)} #{item.dimension.unit}" %>
                                     <% if item.dimension.description != nil %>
                                         <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
-			                                <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
-			                                <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
-		                                </div>
+                                            <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg"><%= item.dimension.description %></span>
+                                            <div class="w-3 h-3 -mt-2 rotate-45 bg-black"></div>
+                                        </div>
                                     <% end %>
                                 </div>
                             <% end %>
                         <% end %>
                     </div>
                 </div>
-            </div>
-            <p class="px-3 text-lg leading-6 text-green-600">
-                <i class="fas fa-circle"></i> - нормальное значение
-            </p>
-            <p class="px-3 text-lg leading-6 text-red-500">
-                <i class="fas fa-circle"></i> - превышение нормы
-            </p>
-            <p class="px-3 text-lg leading-6 text-gray-700">
-                <i class="fas fa-circle"></i> - показатель не нормируется
-            </p>	
+                <div class="overflow-hidden">
+                    <p class="px-3 text-lg leading-6 text-green-600">
+                        <i class="fas fa-circle"></i> - нормальное значение
+                    </p>
+                    <p class="px-3 text-lg leading-6 text-red-500">
+                        <i class="fas fa-circle"></i> - превышение нормы
+                    </p>
+                    <p class="px-3 text-lg leading-6 text-gray-700">
+                        <i class="fas fa-circle"></i> - показатель не нормируется
+                    </p>
+                </div>
+                <div class="relative rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 shadow-lg">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-20" src="/ehlogo.svg" alt="">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <a href="https://energox.com.ua/ru/energoaudyt/analyz-vozduha-v-pomeshhenyy/" class="focus:outline-none">
+                            <span class="absolute inset-0" aria-hidden="true"></span>
+                            <p class="text-sm font-medium text-gray-900">
+                            Компания Энерго Х
+                            </p>
+                            <p class="text-sm text-gray-500 truncate">
+                            Анализы воздуха, организация вентиляции в помещениях.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>	
         </div>
     <% else %>
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">

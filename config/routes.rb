@@ -12,5 +12,11 @@ Rails.application.routes.draw do
     resources :measurements
   end
 
+  namespace :api do
+    namespace :v1 do
+      get 'now', to: 'weather#now'
+    end
+  end
+
   resources :users
 end
